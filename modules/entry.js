@@ -21,6 +21,8 @@ export function resolveEntry (location, cwd, home) {
 
 export class DistributedFilesEntry extends DistributedFilesURL {
   constructor (app, location) {
+    console.warn('DistributedFilesEntry is deprecated, use DistributedFilesURL instead')
+
     super(app)
     this.location = location
     this.unsaved = false

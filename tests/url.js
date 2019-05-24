@@ -1,6 +1,19 @@
 import {parseUrl} from '../modules/url.js'
 
-export function url_basic (t) {
+export function url_props (t) {
+  let url = parseUrl('dat://example.com/dfurl.hashbase.io/modules/url.js')
+  let cases = [
+    "url.base === 'url.js'",
+    "url.ext === 'js'",
+    "url.name === 'url'",
+    "url.parent === 'modules'"
+  ]
+
+  cases.forEach(c => t.ok(eval(c), c))
+  t.end()
+}
+
+export function url_setters (t) {
   let cwd = parseUrl('dat://example.com/beakerbrowser.com+preview/index.html')
   t.ok(cwd.location === 'dat://beakerbrowser.com+preview/index.html', 'constructor: check location')
   t.ok(cwd.archive.url === 'dat://beakerbrowser.com+preview', 'constructor: check archive')
